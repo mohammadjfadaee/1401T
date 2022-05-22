@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "minimall",
+    "slug": "minimall",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
