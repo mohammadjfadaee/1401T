@@ -7,11 +7,6 @@ import styles from "./Components/Styles/globalStyle";
 const App = () => {
     const[ persons,setPersons] = useState([
       {name:"محمد" , key:"1", completed: false},
-      {name:"علی فدایی" , key:"2", completed: false},
-      {name:"خسزو حیدری" , key:"3", completed: false},
-      {name:"فاطمه محبی" , key:"4", completed: false},
-      {name:"رحیمه فدایی" , key:"5", completed: false},
-    
     ]);
    const handlerPerson=(key)=>{
     setPersons((prevPersons)=>prevPersons.filter((p)=>p.key != key));
