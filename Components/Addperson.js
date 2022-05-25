@@ -1,15 +1,16 @@
 import React from 'react';
 import {View, StyleSheet,TextInput,Button} from 'react-native';
+import styles from './Styles/globalStyle';
 
 
 
 const Addperson = ({Sumbithandler,setperson,person}) => {
     return (
-        <View  >
+        <View style={{marginBottom:15}} >
             <TextInput 
             placeholder='اسم جدید...'
             style={styles.input}
-            placeholderTextColor="#fff"
+            placeholderTextColor="#000"
             onChangeText={setperson}
             value={person}
              />
@@ -23,17 +24,5 @@ const Addperson = ({Sumbithandler,setperson,person}) => {
     );
 }
 
-const styles = StyleSheet.create({
-    input:{
-       
-        borderBottomColor:"red",
-        borderBottomWidth:1,
-        fontSize:17,
-        color:"#fff",
-        textAlign:"center", 
-        marginBottom:15
-
-    }
-})
 
 export default Addperson;

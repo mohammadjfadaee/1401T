@@ -1,33 +1,30 @@
 import React from 'react';
 import {View, StyleSheet,TouchableOpacity,Text} from 'react-native';
-
-const Person = ({person,handlerPerson}) => {
+import { AntDesign } from '@expo/vector-icons';
+import styles from './Styles/globalStyle';
+const Person = ({person,handlerPerson,completedHandler}) => {
  
     return (
-      <TouchableOpacity onPress={()=>{handlerPerson(person.key)}} >
-          <Text style={styles.person} >
-           {person.name}
-          </Text>
+      <TouchableOpacity onPress={()=>{completedHandler}} >
+          <View style={styles.person} >
+              <Text>
+               <AntDesign name="delete" size={24} color="red" onPress={()=>{handlerPerson(person.key)}}  />
+              </Text>
+            
+              <Text
+                    style={[
+                        styles.personName,
+                        person.completed
+                            ? { textDecorationLine: "line-through" }
+                            : {},
+                    ]}
+                >
+                    {person.name}
+                </Text>
+          </View>
+          
       </TouchableOpacity>
     );
 }
-
-const styles = StyleSheet.create({
-    person:{
-      
-        backgroundColor:"#fff",
-        marginTop:20,
-        width:"100%",
-        padding:20,
-        textAlign:"center",
-        borderRadius:15,
-        borderWidth:1,
-        borderColor:"red",
-        borderStyle:"dashed",
-
-        
-
-    }
-})
 
 export default Person;
