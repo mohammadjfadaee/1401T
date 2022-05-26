@@ -1,22 +1,17 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import {View, StyleSheet,FlatList,Alert,TouchableWithoutFeedback} from 'react-native';
+import React, {  useState } from 'react';
+import {View,FlatList,Alert,TouchableWithoutFeedback} from 'react-native';
 import Addperson from './Components/Addperson';
 import Header from "./Components/Header";
 import Person from './Components/Person';
 import styles from "./Components/Styles/globalStyle";
-import AppLoading from 'expo-app-loading';
-import * as Font from "expo-font";
-
-
-const getFonts=()=>{
-    return Font.loadAsync({
-        yeKan:require('./assets/fonts/byekan.ttf')
-    })
-}
-
+import { useFonts } from 'expo-font';
 
 const App = () => {
-    const [fontLoading, setFontLoading] = useState(false);
+
+    const [loaded] = useFonts({
+        Montserrat: require('./assets/fonts/byekan.ttf'),
+      });
+
     const[ persons,setPersons] = useState([
       {name:"محمد" , key:"1", completed: false},
     ]);
@@ -42,7 +37,6 @@ const App = () => {
            
        }
  
-
    };
    const [person,setperson]=useState("");
 
@@ -55,9 +49,11 @@ const App = () => {
 
     setperson(allPersons);
 };
-if (fontLoading) {
-
-     return (
+    if (!loaded) {
+        return null;
+      }
+    
+      return (
         <TouchableWithoutFeedback>
                <View style={styles.conatiner} >
             <Header/>
@@ -77,19 +73,5 @@ if (fontLoading) {
         </TouchableWithoutFeedback>
      
     );
-}
-else {
-    return (
-        <AppLoading
-            startAsync={getFonts}
-            onFinish={() => setFontLoading(true)}
-            onError={console.warn}
-        />
-    );
-}
-   
-}
-
-
-
+    }
 export default App;
