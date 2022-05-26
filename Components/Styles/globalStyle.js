@@ -47,14 +47,16 @@ import { StyleSheet } from "react-native";
         backgroundColor:"red",
         height:90,
         alignItems:"center",
-        justifyContent:"center"
-
+        justifyContent:"center",
+       
+         
     },
     text:{
         fontSize:20,
-        fontWeight:"bold",
         color:"#fff",
-
+        fontFamily:"yeKan"
+      
+        
     }
 
 

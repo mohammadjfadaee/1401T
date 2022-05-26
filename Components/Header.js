@@ -4,7 +4,7 @@ import styles from './Styles/globalStyle';
 const Header = () => {
     return (
         <View style={styles.header} >
-            <Text style={styles.text} >
+            <Text style={[styles.text]} >
                 مدیریت کننده اشخاص
             </Text>
         </View>

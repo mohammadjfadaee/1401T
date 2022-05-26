@@ -1,10 +1,22 @@
-import React,{useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {View, StyleSheet,FlatList,Alert,TouchableWithoutFeedback} from 'react-native';
 import Addperson from './Components/Addperson';
 import Header from "./Components/Header";
 import Person from './Components/Person';
 import styles from "./Components/Styles/globalStyle";
+import AppLoading from 'expo-app-loading';
+import * as Font from "expo-font";
+
+
+const getFonts=()=>{
+    return Font.loadAsync({
+        yeKan:require('./assets/fonts/byekan.ttf')
+    })
+}
+
+
 const App = () => {
+    const [fontLoading, setFontLoading] = useState(false);
     const[ persons,setPersons] = useState([
       {name:"محمد" , key:"1", completed: false},
     ]);
@@ -43,8 +55,9 @@ const App = () => {
 
     setperson(allPersons);
 };
+if (fontLoading) {
 
-    return (
+     return (
         <TouchableWithoutFeedback>
                <View style={styles.conatiner} >
             <Header/>
@@ -64,6 +77,17 @@ const App = () => {
         </TouchableWithoutFeedback>
      
     );
+}
+else {
+    return (
+        <AppLoading
+            startAsync={getFonts}
+            onFinish={() => setFontLoading(true)}
+            onError={console.warn}
+        />
+    );
+}
+   
 }
 
 
